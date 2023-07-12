@@ -1,0 +1,52 @@
+apply plugin: "java"
+
+group 'JAVA UDEMY'
+version '2.0'
+tasks.withType(JavaCompile) { 
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8" 
+}
+repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'org.slf4j:slf4j-api:1.7.36'
+        implementation 'org.slf4j:slf4j-simple:1.7.36'
+        implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.11.0'
+        testImplementation 'junit:junit:4.13'
+        implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.7.2'
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events "passed", "skipped", "failed"}
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += "--enable-preview"
+    }
+
+    tasks.withType(Test) {
+        jvmArgs += "--enable-preview"
+    }
+
+    tasks.withType(JavaExec) {
+        jvmArgs += '--enable-preview'
+    } }
+
+
+
+
+
+
+
+/*repositories {
+    mavenCentral()
+}
+dependencies {
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.4.0'
+
+}*/
+
